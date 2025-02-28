@@ -1,14 +1,27 @@
 <?php
 
-namespace Vendor\Template\Config;
+namespace Yuges\Package\Config;
 
-class Config
+use Yuges\Package\Interfaces\ConfigInterface;
+use Illuminate\Support\Facades\Config as ConfigFacade;
+
+abstract class Config implements ConfigInterface
 {
-    /** @return class-string<Template> */
-    public static function getTemplateClass()
-    {
+    const string NAME = '';
 
+    public static function getName(): string
+    {
+        return self::NAME;
     }
 
-    # code...
+    public static function get(string $key, mixed $default = null): mixed
+    {
+        $name = self::getName();
+
+        if (strlen($name)) {
+            $name .= '.';
+        }
+
+        return ConfigFacade::get($name . $key, $default);
+    }
 }
