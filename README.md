@@ -3,6 +3,39 @@
 </div>
 
 <div align="center">
+    <b>Build<b>
+    <div>
+        <img
+            alt="GitHub Branch Check Runs"
+            src="https://img.shields.io/github/check-runs/yuges-code/laravel-package/main"
+        >
+        <img
+            alt="GitHub Tests Action Status"
+            src="https://img.shields.io/github/actions/workflow/status/yuges-code/laravel-package/testing.yml?branch=main&label=tests&style=flat-square"
+        >
+    </div>
+</div>
+
+<div align="center">
+    <b>Project</b>
+    <div>
+        <img alt="GitHub Release" src="https://img.shields.io/github/v/release/yuges-code/laravel-package">
+        <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/yuges-code/laravel-package">
+        <img alt="GitHub License" src="https://img.shields.io/github/license/yuges-code/laravel-package">
+        <img alt="Packagist Stars" src="https://img.shields.io/packagist/stars/yuges-code/laravel-package">
+        <img
+            alt="Packagist Dependency Version"
+            src="https://img.shields.io/packagist/dependency-v/yuges-code/laravel-package/php"
+        >
+    </div>
+</div>
+
+<div align="center">
+    <b>Quality</b>
+</div>
+
+
+<div align="center">
     <h1>Laravel package starter kit</h1>
 </div>
 
@@ -10,26 +43,12 @@
     <h3>🚀 Starter kit for all Yuges Laravel packages</h3>
 </div>
 
-<div align="center">
-    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/yuges-code/laravel-package">
-    <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/yuges-code/laravel-package">
-    <img alt="GitHub License" src="https://img.shields.io/github/license/yuges-code/laravel-package">
-    <img alt="Packagist Stars" src="https://img.shields.io/packagist/stars/yuges-code/laravel-package">
-    <img
-        alt="Packagist Dependency Version"
-        src="https://img.shields.io/packagist/dependency-v/yuges-code/laravel-package/php"
-    >
-</div>
-
 # 💿 Installation
 
-To use this template, clone the repository and install the dependencies:
+You can install the package via composer:
 
 ```
-git clone https://github.com/yuges-code/laravel-package.git
-cd laravel-package
-
-composer install
+composer require yuges-code/laravel-package
 ```
 
 # 🧪 Running Tests
