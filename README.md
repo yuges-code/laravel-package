@@ -3,11 +3,11 @@
 </div>
 
 <div align="center">
-    <h1>Laravel package template</h1>
+    <h1>Laravel package starter kit</h1>
 </div>
 
 <div align="center">
-    <h3>🚀 Starter template for all Yuges Laravel packages</h3>
+    <h3>🚀 Starter kit for all Yuges Laravel packages</h3>
 </div>
 
 <div align="center">
