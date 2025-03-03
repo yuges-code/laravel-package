@@ -34,7 +34,6 @@
     <b>Quality</b>
 </div>
 
-
 <div align="center">
     <h1>Laravel package starter kit</h1>
 </div>
