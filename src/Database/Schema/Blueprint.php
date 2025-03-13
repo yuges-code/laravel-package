@@ -15,4 +15,9 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
             KeyType::BigInteger => $this->bigIncrements($column),
         };
     }
+
+    public function order(int $default = 1, string $column = 'order'): ColumnDefinition
+    {
+        return $this->unsignedInteger($column)->default($default)->index();
+    }
 }

@@ -11,7 +11,7 @@ abstract class Config implements ConfigInterface
 
     public static function getName(): string
     {
-        return self::NAME;
+        return static::NAME;
     }
 
     public static function get(string $key, mixed $default = null): mixed
