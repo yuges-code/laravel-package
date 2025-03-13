@@ -10,10 +10,6 @@ abstract class Migration extends \Illuminate\Database\Migrations\Migration imple
     /** The name of the migration table. */
     protected ?string $table;
 
-    protected ?string $connection;
-
-    public bool $withinTransaction = true;
-
     public function down(): void
     {
         if (! $this->table) {
@@ -21,10 +17,5 @@ abstract class Migration extends \Illuminate\Database\Migrations\Migration imple
         }
 
         Schema::dropIfExists($this->table);
-    }
-
-    public function getConnection(): ?string
-    {
-        return $this->connection;
     }
 }

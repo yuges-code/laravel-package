@@ -8,5 +8,5 @@ interface MigrationInterface
 
     public function down(): void;
 
-    public function getConnection(): ?string;
+    public function getConnection();
 }
