@@ -16,6 +16,15 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
         };
     }
 
+    public function keyMorphs(KeyType $type = KeyType::BigInteger, string $name, ?string $indexName = null): void
+    {
+        match ($type) {
+            KeyType::Ulid => $this->ulidMorphs($name, $indexName),
+            KeyType::Uuid => $this->uuidMorphs($name, $indexName),
+            KeyType::BigInteger => $this->numericMorphs($name, $indexName),
+        };
+    }
+
     public function order(int $default = 1, string $column = 'order'): ColumnDefinition
     {
         return $this->unsignedInteger($column)->default($default)->index();
