@@ -3,10 +3,13 @@
 namespace Yuges\Package\Data;
 
 use Yuges\Package\Traits\Package\HasConfigs;
+use Yuges\Package\Traits\Package\HasObservers;
 
 class Package
 {
-    use HasConfigs;
+    use
+        HasConfigs,
+        HasObservers;
 
     protected string $dir;
 

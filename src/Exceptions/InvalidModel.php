@@ -10,8 +10,8 @@ class InvalidModel extends Exception
 {
     public static function doesNotImplementModel(string $class): TypeError
     {
-        $modelClass = Model::class;
+        $model = Model::class;
 
-        return new TypeError("Model class `{$class}` must implement `$modelClass}`");
+        return new TypeError("Model class `{$class}` must implement `{$model}`");
     }
 }

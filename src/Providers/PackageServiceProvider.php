@@ -5,6 +5,8 @@ namespace Yuges\Package\Providers;
 use ReflectionClass;
 use Yuges\Package\Data\Package;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Model;
+use Yuges\Package\Exceptions\InvalidModel;
 use Yuges\Package\Traits\Provider\HasPackage;
 use Illuminate\Contracts\Foundation\Application;
 
@@ -45,7 +47,26 @@ abstract class PackageServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        
+        $this->bootObservers();
+
+        $this->packageBooted();
+    }
+
+    public function packageBooted(): void {}
+
+    public function bootObservers(): self
+    {
+        foreach ($this->package->observers as $model => $observer) {
+            $model = new $model;
+
+            if (! $model instanceof Model) {
+                throw InvalidModel::doesNotImplementModel($model);
+            }
+
+            $model::observe($observer);
+        }
+
+        return $this;
     }
 
     public function getDir(): string
