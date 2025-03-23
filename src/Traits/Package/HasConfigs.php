@@ -6,8 +6,12 @@ trait HasConfigs
 {
     protected string $dir;
 
+    /**
+     * @var array{files: array<array-key, string>, tag: string, path: string}
+     */
     public array $configs = [
         'files' => [],
+        'tag' => 'configs',
         'path' => '/../../config/',
     ];
 

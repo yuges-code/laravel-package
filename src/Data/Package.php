@@ -2,14 +2,18 @@
 
 namespace Yuges\Package\Data;
 
+use Yuges\Package\Traits\Package\HasName;
 use Yuges\Package\Traits\Package\HasConfigs;
 use Yuges\Package\Traits\Package\HasObservers;
+use Yuges\Package\Traits\Package\HasMigrations;
 
 class Package
 {
     use
+        HasName,
         HasConfigs,
-        HasObservers;
+        HasObservers,
+        HasMigrations;
 
     protected string $dir;
 

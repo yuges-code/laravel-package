@@ -5,14 +5,19 @@ namespace Yuges\Package\Providers;
 use ReflectionClass;
 use Yuges\Package\Data\Package;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Model;
-use Yuges\Package\Exceptions\InvalidModel;
 use Yuges\Package\Traits\Provider\HasPackage;
+use Yuges\Package\Traits\Provider\BootConfigs;
+use Yuges\Package\Traits\Provider\BootObservers;
 use Illuminate\Contracts\Foundation\Application;
+use Yuges\Package\Traits\Provider\BootMigrations;
 
 abstract class PackageServiceProvider extends ServiceProvider
 {
-    use HasPackage;
+    use
+        HasPackage,
+        BootConfigs,
+        BootObservers,
+        BootMigrations;
 
     public function __construct(Application $app)
     {
@@ -32,42 +37,17 @@ abstract class PackageServiceProvider extends ServiceProvider
         $this->registerConfigs();
     }
 
-    public function registerConfigs(): self
-    {
-        if (empty($this->package->configs['files'])) {
-            return $this;
-        }
-
-        foreach ($this->package->configs['files'] as $file) {
-            $this->mergeConfigFrom($this->package->configPath("{$file}.php"), $file);
-        }
-
-        return $this;
-    }
-
     public function boot(): void
     {
-        $this->bootObservers();
+        $this
+            ->bootConfigs()
+            ->bootObservers()
+            ->bootMigrations();
 
         $this->packageBooted();
     }
 
     public function packageBooted(): void {}
-
-    public function bootObservers(): self
-    {
-        foreach ($this->package->observers as $model => $observer) {
-            $model = new $model;
-
-            if (! $model instanceof Model) {
-                throw InvalidModel::doesNotImplementModel($model);
-            }
-
-            $model::observe($observer);
-        }
-
-        return $this;
-    }
 
     public function getDir(): string
     {
