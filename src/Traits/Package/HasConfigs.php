@@ -2,6 +2,8 @@
 
 namespace Yuges\Package\Traits\Package;
 
+use Illuminate\Support\Collection;
+
 trait HasConfigs
 {
     protected string $dir;
@@ -24,9 +26,12 @@ trait HasConfigs
         return $this;
     }
 
-    public function hasConfigs(string ...$configs): static
+    public function hasConfigs(string|array ...$configs): static
     {
-        $this->configs['files'] = array_merge($this->configs['files'], $configs);
+        $this->configs['files'] = array_merge(
+            $this->configs['files'],
+            Collection::make($configs)->flatten()->toArray()
+        );
 
         return $this;
     }

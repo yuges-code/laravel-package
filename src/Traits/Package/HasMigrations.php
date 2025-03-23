@@ -2,6 +2,8 @@
 
 namespace Yuges\Package\Traits\Package;
 
+use Illuminate\Support\Collection;
+
 trait HasMigrations
 {
     protected string $dir;
@@ -24,9 +26,12 @@ trait HasMigrations
         return $this;
     }
 
-    public function hasMigrations(...$migrations): static
+    public function hasMigrations(string|array ...$migrations): static
     {
-        $this->migrations['files'] = array_merge($this->migrations['files'], $migrations);
+        $this->migrations['files'] = array_merge(
+            $this->migrations['files'],
+            Collection::make($migrations)->flatten()->toArray()
+        );
 
         return $this;
     }
