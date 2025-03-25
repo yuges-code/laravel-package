@@ -12,6 +12,11 @@ class Schema
         self::connection()->create($table, $callback);
     }
 
+    public static function table(string $table, Closure $callback): void
+    {
+        self::connection()->table($table, $callback);
+    }
+
     public static function hasTable(string $table): bool
     {
         return self::connection()->hasTable($table);

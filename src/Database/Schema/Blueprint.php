@@ -25,6 +25,19 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
         };
     }
 
+    public function nullableKeyMorphs(
+        KeyType $type = KeyType::BigInteger,
+        string $name,
+        ?string $indexName = null
+    ): void
+    {
+        match ($type) {
+            KeyType::Ulid => $this->nullableUlidMorphs($name, $indexName),
+            KeyType::Uuid => $this->nullableUuidMorphs($name, $indexName),
+            KeyType::BigInteger => $this->nullableNumericMorphs($name, $indexName),
+        };
+    }
+
     public function order(int $default = 1, string $column = 'order'): ColumnDefinition
     {
         return $this->unsignedInteger($column)->default($default)->index();
