@@ -5,6 +5,7 @@ namespace Yuges\Package\Providers;
 use ReflectionClass;
 use Yuges\Package\Data\Package;
 use Illuminate\Support\ServiceProvider;
+use Yuges\Package\Traits\Provider\BootViews;
 use Yuges\Package\Traits\Provider\HasPackage;
 use Yuges\Package\Traits\Provider\BootConfigs;
 use Yuges\Package\Traits\Provider\BootObservers;
@@ -15,6 +16,7 @@ abstract class PackageServiceProvider extends ServiceProvider
 {
     use
         HasPackage,
+        BootViews,
         BootConfigs,
         BootObservers,
         BootMigrations;
@@ -42,7 +44,8 @@ abstract class PackageServiceProvider extends ServiceProvider
         $this
             ->bootConfigs()
             ->bootObservers()
-            ->bootMigrations();
+            ->bootMigrations()
+            ->bootViews();
 
         $this->packageBooted();
     }
