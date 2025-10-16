@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Yuges\Package\Traits\Provider\BootViews;
 use Yuges\Package\Traits\Provider\HasPackage;
 use Yuges\Package\Traits\Provider\BootConfigs;
+use Yuges\Package\Traits\Provider\BootSeeders;
 use Yuges\Package\Traits\Provider\BootObservers;
 use Illuminate\Contracts\Foundation\Application;
 use Yuges\Package\Traits\Provider\BootMigrations;
@@ -18,6 +19,7 @@ abstract class PackageServiceProvider extends ServiceProvider
         HasPackage,
         BootViews,
         BootConfigs,
+        BootSeeders,
         BootObservers,
         BootMigrations;
 
@@ -45,6 +47,7 @@ abstract class PackageServiceProvider extends ServiceProvider
             ->bootConfigs()
             ->bootObservers()
             ->bootMigrations()
+            ->bootSeeders()
             ->bootViews();
 
         $this->packageBooted();
