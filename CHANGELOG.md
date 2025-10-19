@@ -2,6 +2,10 @@
 
 All notable changes to laravel-package will be documented in this file.
 
+## 1.1.4 - 2025-10-19
+
+**Full Changelog**: https://github.com/yuges-code/laravel-package/compare/1.1.3...1.1.4
+
 ## 1.1.3 - 2025-10-16
 
 **Full Changelog**: https://github.com/yuges-code/laravel-package/compare/1.1.2...1.1.3
