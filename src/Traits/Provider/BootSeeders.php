@@ -3,7 +3,6 @@
 namespace Yuges\Package\Traits\Provider;
 
 use Carbon\Carbon;
-use ReflectionClass;
 use Yuges\Package\Data\Package;
 
 trait BootSeeders
@@ -23,8 +22,8 @@ trait BootSeeders
         $group = $this->generateSeederGroup();
 
         foreach ($this->package->seeders['classes'] as $class) {
-            $class = new ReflectionClass($class)->getShortName();
-            $class =  "{$class}.php";
+            $class = substr(strrchr($class, '\\'), 1);
+            $class = "{$class}.php";
             $path = $this->package->seederPath($class);
 
             if ($this->app->runningInConsole()) {
